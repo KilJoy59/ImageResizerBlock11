@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
  * Created by End on сент., 2019
  */
 public class Main {
+    private static int targetSize = 300;
+
     public static void main(String[] args) {
         String srcFoleder = "D:/src";
         String dstFolder = "D:/dst";
@@ -19,7 +21,7 @@ public class Main {
 
         ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         for (File file : files) {
-            pool.submit(new ImageResizer(file, dstFolder, start));
+            pool.submit(new ImageResizer(file, dstFolder, start,targetSize));
         }
         //метод закрывающий pool
         shutdownAndAwaitTermination(pool);
